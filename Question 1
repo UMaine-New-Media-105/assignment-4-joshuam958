@@ -1,0 +1,51 @@
+function setup() {
+  createCanvas(400, 400);
+  angleMode(DEGREES);
+  ellipseMode(CORNER);
+  flower1 = {
+    x: 100,
+    y: 180,
+    size: 1,
+    petals: 5,
+    angle: 180,
+    outline: "red",
+  };
+  flower2 = {
+    x: 280,
+    y: 110,
+    size: 0.8,
+    petals: 12,
+    angle: 0,
+    outline: "turquoise",
+  };
+  flower3 = {
+    x: 190,
+    y: 320,
+    size: 1.4,
+    petals: 30,
+    angle: 0,
+    outline: "hotpink",
+  };
+}
+
+function draw() {
+  background(1);
+  addFlower(flower1);
+  addFlower(flower2);
+  addFlower(flower3);
+}
+
+function addFlower(flower) {
+  let addAngle = 360 / flower.petals;
+  push();
+  stroke(flower.outline);
+  noFill();
+  translate(flower.x, flower.y);
+  scale(flower.size);
+  rotate(flower.angle);
+  for (petalsDrawn = 0; petalsDrawn < flower.petals; petalsDrawn++) {
+    ellipse(-10, 0, 20, 40);
+    rotate(addAngle);
+  }
+  pop();
+}
