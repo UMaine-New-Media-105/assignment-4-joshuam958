@@ -1,0 +1,69 @@
+function setup() {
+  createCanvas(960, 540);
+  angleMode(DEGREES);
+  ellipseMode(CORNER);
+  //global variables
+  tilesPerRow = random(3,6);
+  tilesPerColumn = random(2,4);
+  tileWidth = width / tilesPerRow;
+  tileHeight = height / tilesPerColumn;
+  noLoop();
+  flower1 = {
+    startX: random(width/tilesPerRow),
+    startY: random(height/tilesPerColumn),
+    size: random(0.8,1.2),
+    petals: random(5,30),
+    angle: 180,
+    outline: "red",
+  };
+  flower2 = {
+    startX: random(width/tilesPerRow),
+    startY: random(height/tilesPerColumn),
+    size: random(0.8,1.2),
+    petals: random(5,30),
+    angle: 0,
+    outline: "turquoise",
+  };
+  flower3 = {
+    startX: random(width/tilesPerRow),
+    startY: random(height/tilesPerColumn),
+    size: random(0.8,1.2),
+    petals: random(5,30),
+    angle: 0,
+    outline: "hotpink",
+  };
+}
+
+function draw() {
+  background(1);
+  for (columnsDrawn = 0; columnsDrawn < tilesPerRow; columnsDrawn++) {
+    let offsetRight = columnsDrawn * tileWidth;
+    for (rowsDrawn = 0; rowsDrawn < tilesPerColumn; rowsDrawn++) {
+      let offsetDown = rowsDrawn * tileHeight;
+      flower1.x = flower1.startX + offsetRight;
+      flower2.x = flower2.startX + offsetRight;
+      flower3.x = flower3.startX + offsetRight;
+      flower1.y = flower1.startY + offsetDown;
+      flower2.y = flower2.startY + offsetDown;
+      flower3.y = flower3.startY + offsetDown;
+      addFlower(flower1);
+      addFlower(flower2);
+      addFlower(flower3);
+    }
+  }
+}
+
+function addFlower(flower) {
+  let addAngle = 360 / flower.petals;
+  push();
+  stroke(flower.outline);
+  noFill();
+  translate(flower.x, flower.y);
+  scale(flower.size);
+  rotate(flower.angle);
+  for (petalsDrawn = 0; petalsDrawn < flower.petals; petalsDrawn++) {
+    ellipse(-10, 0, 20, 40);
+    rotate(addAngle);
+  }
+  pop();
+}
