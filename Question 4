@@ -1,0 +1,72 @@
+function setup() {
+  createCanvas(960, 540);
+  angleMode(DEGREES);
+  ellipseMode(CORNER);
+  flowers = ["5pet","10pet","15pet","20pet","25pet","30pet","-25pet","-20pet","-15pet","-10pet"];
+  tilesPerRow = 12
+  tileWidth = width / tilesPerRow
+  tilesPerColumn = 7
+  tileHeight = height / tilesPerColumn
+}
+
+function draw() {
+  background(1);
+  for (rowsDrawn = 0; rowsDrawn < tilesPerColumn; rowsDrawn++){
+    for (columnsDrawn = 0; columnsDrawn < tilesPerRow; columnsDrawn++){
+      let thisFlower = flowers[(columnsDrawn + rowsDrawn) % flowers.length];
+      let thisX = columnsDrawn * tileWidth;
+      let thisY = rowsDrawn * tileHeight;
+      addPattern(thisFlower,thisX,thisY);
+    }
+  }
+}
+
+function addPattern(flowers,x,y){
+  push()
+  translate(x,y)
+  if (flowers == "5pet"){
+  addFlower(5,"hsla(0,100%,50%,1)")
+  }
+  else if (flowers == "10pet"){
+  addFlower(10,"hsla(36,100%,50%,1)")
+  }
+  else if (flowers == "15pet"){
+  addFlower(15,"hsla(72,100%,50%,1)")
+  }
+  else if (flowers == "20pet"){
+  addFlower(20,"hsla(108,100%,50%,1)")
+  }
+  else if (flowers == "25pet"){
+  addFlower(25,"hsla(144,100%,50%,1)")
+  }
+  else if (flowers == "30pet"){
+  addFlower(30,"hsla(180,100%,50%,1)")
+  }
+  else if (flowers == "-25pet"){
+  addFlower(25,"hsla(216,100%,50%,1)")
+  }
+  else if (flowers == "-20pet"){
+  addFlower(20,"hsla(252,100%,50%,1)")
+  }
+  else if (flowers == "-15pet"){
+  addFlower(15,"hsla(288,100%,50%,1)")
+  }
+  else if (flowers == "-10pet"){
+  addFlower(10,"hsla(324,100%,50%,1)")
+  }
+  pop()
+}
+function addFlower(petals,outline) {
+  let addAngle = 360 / petals;
+  push();
+  stroke(outline);
+  noFill();
+  translate(50,50);
+  scale(1);
+  rotate(180);
+  for (petalsDrawn = 0; petalsDrawn < petals; petalsDrawn++) {
+    ellipse(-10, 0, 20, 40);
+    rotate(addAngle)
+  }
+  pop();
+}
