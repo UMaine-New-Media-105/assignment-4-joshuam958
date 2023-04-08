@@ -9,3 +9,6 @@ https://editor.p5js.org/joshua.mann/sketches/32DcGB_3g
 
 Question 3: This was very simple for me. I just added randomness to almost all of the objects, to randomize position, size, and number of petals of the 3 flowers. I also added some randomness to how many tiles there will be.
 https://editor.p5js.org/joshua.mann/sketches/LTWRihZa1
+
+Question 4: I got stumped at a few points during this question but, love the overall result. I even messed with putting higher nubers for the rows, and columns and it looks really nice. I enjoy the color pattern I created with this one.
+https://editor.p5js.org/joshua.mann/sketches/lxFOTUfHI
